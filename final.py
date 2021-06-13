@@ -37,14 +37,14 @@ angle = 45
 run = True
 
 while run:
-    pygame.time.delay(120)  # скорость обновления окна
+    pygame.time.delay(150)  # скорость обновления окна
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:  # события ввода
             run = False  # Основной выход
     objs.append(
         Pol(0, 0, 0, 0, 0, 0, 0, 0))
-    angle = angle+1
+    angle = angle+5
     objs.insert(0,
                 Pol(25,
                     25,
@@ -64,44 +64,29 @@ while run:
 
 
     for i in range(9):
+        x1_y1 = (5 + 5 * i * i, 5 + 5 * i * i)
+        x2_y2 = (5 + 5 * (i + 1) * (i + 1), 5 + 5 * (i + 1) * (i + 1))
+
         pygame.draw.polygon(win, (objs[i].r, objs[i].g, objs[i].b),
-                            [center_origin(win, (turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a+5)[0], turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a+5))[1]),
-                             center_origin(win, (turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a)[0], turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a))[1]),
-                             center_origin(win, (turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a-90)[0], (turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a-90)))[1]),
-                             center_origin(win, (turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a-90)[0], turn((5 + 5 * i * i, (5 + 5 * i * i)), objs[i].a-90))[1])])
+                            [center_origin(win, (turn(x1_y1, objs[i].a + 5)[0], turn(x1_y1, objs[i].a + 5))[1]),
+                             center_origin(win, (turn(x2_y2, objs[i].a)[0], turn(x2_y2, objs[i].a))[1]),
+                             center_origin(win, (turn(x2_y2, objs[i].a - 90)[0], turn(x2_y2, objs[i].a - 90))[1]),
+                             center_origin(win, (turn(x1_y1, objs[i].a - 90)[0], turn(x1_y1, objs[i].a - 90))[1])])
         pygame.draw.polygon(win, (objs[i].r, objs[i].g, objs[i].b),
-                            [center_origin(win, (turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a - 85)[0],
-                                                 turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a - 85))[1]),
-                             center_origin(win, (
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a-90)[0],
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a - 90))[1]),
-                             center_origin(win, (
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a - 180)[0],
-                             (turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a - 180)))[1]),
-                             center_origin(win, (turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a - 180)[0],
-                                                 turn((5 + 5 * i * i, (5 + 5 * i * i)), objs[i].a - 180))[1])])
+                            [center_origin(win, (turn(x1_y1, objs[i].a - 85)[0], turn(x1_y1, objs[i].a - 85))[1]),
+                             center_origin(win, (turn(x2_y2, objs[i].a - 90)[0], turn(x2_y2, objs[i].a - 90))[1]),
+                             center_origin(win, (turn(x2_y2, objs[i].a - 180)[0], turn(x2_y2, objs[i].a - 180))[1]),
+                             center_origin(win, (turn(x1_y1, objs[i].a - 180)[0], turn(x1_y1, objs[i].a - 180))[1])])
         pygame.draw.polygon(win, (objs[i].r, objs[i].g, objs[i].b),
-                            [center_origin(win, (turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a-175)[0],
-                                                 turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a-175))[1]),
-                             center_origin(win, (
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a-180)[0],
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a-180))[1]),
-                             center_origin(win, (
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a - 270)[0],
-                             (turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a - 270)))[1]),
-                             center_origin(win, (turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a - 270)[0],
-                                                 turn((5 + 5 * i * i, (5 + 5 * i * i)), objs[i].a - 270))[1])])
+                            [center_origin(win, (turn(x1_y1, objs[i].a - 175)[0], turn(x1_y1, objs[i].a - 175))[1]),
+                             center_origin(win, (turn(x2_y2, objs[i].a - 180)[0], turn(x2_y2, objs[i].a - 180))[1]),
+                             center_origin(win, (turn(x2_y2, objs[i].a - 270)[0], turn(x2_y2, objs[i].a - 270))[1]),
+                             center_origin(win, (turn(x1_y1, objs[i].a - 270)[0], turn(x1_y1, objs[i].a - 270))[1])])
         pygame.draw.polygon(win, (objs[i].r, objs[i].g, objs[i].b),
-                            [center_origin(win, (turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a-265)[0],
-                                                 turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a-265))[1]),
-                             center_origin(win, (
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a-270)[0],
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a-270))[1]),
-                             center_origin(win, (
-                             turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a - 360)[0],
-                             (turn((5 + 5 * (i + 1) * (i + 1), (5 + 5 * (i + 1) * (i + 1))), objs[i].a - 360)))[1]),
-                             center_origin(win, (turn((5 + 5 * i * i, 5 + 5 * i * i), objs[i].a - 360)[0],
-                                                 turn((5 + 5 * i * i, (5 + 5 * i * i)), objs[i].a - 360))[1])])
+                            [center_origin(win, (turn(x1_y1, objs[i].a - 265)[0], turn(x1_y1, objs[i].a - 265))[1]),
+                             center_origin(win, (turn(x2_y2, objs[i].a - 270)[0], turn(x2_y2, objs[i].a - 270))[1]),
+                             center_origin(win, (turn(x2_y2, objs[i].a - 360)[0], turn(x2_y2, objs[i].a - 360))[1]),
+                             center_origin(win, (turn(x1_y1, objs[i].a - 360)[0], turn(x1_y1, objs[i].a - 360))[1])])
 
     pygame.display.update()
     win.fill(color)
